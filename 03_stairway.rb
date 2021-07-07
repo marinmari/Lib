@@ -14,22 +14,16 @@ def stagne (position)
 end
 
 def lance_des
-        puts "y pour lancer"
-        new_entry = gets.chomp
-        while new_entry != "y"
-            puts "mec t'abuses"
-            puts "C'est juste une touche" 
-            new_entry = gets.chomp
-        end
-            des = rand (1..6)
-        
+    des = rand (1..6)
     return des   
 end 
 
 def jeux(position)
+    nb_lances = 0
     while position < 10
         puts "#{position} avant"
         des = lance_des
+        nb_lances += 1
         puts "Tu as fait : #{des}"
         if des == 5 || des == 6
             position = avance(position)
@@ -44,18 +38,24 @@ def jeux(position)
         end
         puts "Ta position est :#{position}"
     end
-    return true 
+    return nb_lances
 end
 
-def victoire(jeux)
+def victoire
     puts "Bravo !"
 end
 
 def perform 
     position = 1
-    puts position
-    jeux = jeux(position)
-    victoire(jeux)
+    compteur_lances = 0
+    100.times do 
+        puts position
+        compteur_lances = compteur_lances + jeux(position)
+        victoire
+        puts compteur_lances
+    end
+    moyenne_lances = compteur_lances / 100
+    puts moyenne_lances 
 end
 
 perform
