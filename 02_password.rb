@@ -26,8 +26,11 @@ def welcome_screen (login)
     
 end 
 
-
+def perform 
     pswrd = signup
     puts "#{pswrd}"
     login = login(pswrd)
     welcome_screen(login)
+end
+
+perform 
