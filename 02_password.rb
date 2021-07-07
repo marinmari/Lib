@@ -7,14 +7,27 @@ def signup
 end
 
 #demande du mot de passe (login)
-def login 
-
+def login(pswrd)
+    puts "Veuillez renseigner votre mot de passe :" 
+    new_entry = gets.chomp
+        while new_entry != pswrd
+            puts "mot de passe erronné"
+            puts "Veuillez renseigner votre mot de passe :" 
+            new_entry = gets.chomp
+        end 
+    return true
 end 
 
 #Ecran de bienvenue
-def welcome_screen 
-
+def welcome_screen (login)
+    if login == true
+      puts "Bienvenu"
+    end
+    
 end 
 
-pswrd = signup
-puts "#{pswrd}"
+
+    pswrd = signup
+    puts "#{pswrd}"
+    login = login(pswrd)
+    welcome_screen(login)
